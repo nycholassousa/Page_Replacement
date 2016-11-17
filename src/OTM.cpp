@@ -5,7 +5,7 @@ void OTM::start(int value){
 	_heap.push_back(value);
 }
 
-void OTM::lookingToFuture(){
+void OTM::future(){
 	int lastPosition;
 	int aux;
 	for (int i = 0; _buffer.size() < getFrame(); i++){
@@ -20,7 +20,7 @@ void OTM::lookingToFuture(){
 	}
 	for(int i = lastPosition; i < _heap.size(); i++){
 		if(searchNumber(_heap[i]) == false){
-			aux = higherDistance(i);
+			aux = distance(i);
 			_buffer[aux] = _heap[i];
 			setPage(getPage() + 1);
 		}
@@ -28,7 +28,7 @@ void OTM::lookingToFuture(){
 
 }
 
-int OTM::higherDistance(int value) const{
+int OTM::distance(int value) const{
 	std::vector<int> distance;
 	int j = 0;
 	int aux = value; 

@@ -9,9 +9,9 @@ class OTM: public PageReplacement{
 		
 	public:
 		void start(int value);
-		void lookingToFuture();
+		void future();
 
-		int higherDistance(int value) const;
+		int distance(int value) const;
 };
 
 #endif
