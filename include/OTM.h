@@ -5,7 +5,7 @@
 
 class OTM: public PageReplacement{
 	private:
-		std::vector<int> _heap;
+		std::vector<int> _otmBuffer;
 		
 	public:
 		void start(int value);

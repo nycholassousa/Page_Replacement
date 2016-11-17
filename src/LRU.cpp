@@ -5,7 +5,7 @@ void LRU::start(int value){
 	if(_buffer.size() < getFrame()){
 		if(searchNumber(value) == false){
 			_buffer.push_back(value);
-			_age.push_back(getHead());
+			_lruBuffer.push_back(getHead());
 			setHead(getHead() + 1);
 			setPage(getPage() + 1);
 		}

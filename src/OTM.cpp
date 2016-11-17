@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 void OTM::start(int value){
-	_heap.push_back(value);
+	_otmBuffer.push_back(value);
 }
 
 void OTM::future(){
@@ -14,14 +14,14 @@ void OTM::future(){
 			setPage(getPage() - 1);
 		}
 
-		_buffer.push_back(_heap[i]);
+		_buffer.push_back(_otmBuffer[i]);
 		setPage(getPage() + 1);
 		lastPosition = i;
 	}
-	for(int i = lastPosition; i < _heap.size(); i++){
-		if(searchNumber(_heap[i]) == false){
+	for(int i = lastPosition; i < _otmBuffer.size(); i++){
+		if(searchNumber(_otmBuffer[i]) == false){
 			aux = distance(i);
-			_buffer[aux] = _heap[i];
+			_buffer[aux] = _otmBuffer[i];
 			setPage(getPage() + 1);
 		}
 	}
@@ -36,8 +36,8 @@ int OTM::distance(int value) const{
 	distance.clear();
 
 	for(int i = 0; i < _buffer.size(); i++){
-		for(j = aux; j < _heap.size(); j++){
-			if(_buffer[i] == _heap[j]){
+		for(j = aux; j < _otmBuffer.size(); j++){
+			if(_buffer[i] == _otmBuffer[j]){
 				distance.push_back(j);
 			}
 		}
