@@ -8,7 +8,7 @@ void OTM::init(int value){
 void OTM::lookingToFuture(){
 	int aux = 0;
 	int i = 0;
-	for(i = 0; _buffer.size() < getFrameSize(); i++){
+	for (i = 0; _buffer.size() < getFrameSize(); i++){
 		
 		if(i == 0){
 			incrementPaging(false);
@@ -27,25 +27,25 @@ void OTM::lookingToFuture(){
 
 }
 
-int OTM::higherDistance(int test){
-	int i = 0, i2 =0 ;
+int OTM::higherDistance(int test) const{
+	int j = 0;
 	std::vector<int> distance;
 	int aux = test;
 	int higher_position = 0; 
 	distance.clear();
-	for(i = 0; i < _buffer.size(); i++){
-		for(i2 = aux; i2 < _heap.size(); i2++){
-			if(_buffer[i] == _heap[i2]){
-				distance.push_back(i2);
+	for(int i = 0; i < _buffer.size(); i++){
+		for(j = aux; j < _heap.size(); j++){
+			if(_buffer[i] == _heap[j]){
+				distance.push_back(j);
 			}
 		}
-		i2 = 0;
+		j = 0;
 	}
 	
 	return 0;
 }
 
-int OTM::findPosition(int value){
+int OTM::findPosition(int value) const{
 	for(int i = 0; i < _heap.size(); i++){
 		if(_heap[i] == value)
 			return i;
