@@ -5,52 +5,36 @@ std::vector<int> PageReplacement::getBuffer() const{
 }
 
 int PageReplacement::getFrameSize() const{
-	return _frame_size;
+	return _frameSize;
 }
 
-void PageReplacement::setFrameSize(int value){
-	_frame_size = value;
+void PageReplacement::setFrameSize(int frameSize){
+	_frameSize = frameSize;
 }
 
-int PageReplacement::getPaging() const{
-	return _paging;
+int PageReplacement::getPage() const{
+	return _page;
+}
+
+void PageReplacement::setPage(int page){
+	_page = page;
 }
 
 int PageReplacement::getHead() const{
 	return _head;
 }
 
-void PageReplacement::setHead(int value){
-	_head = value;
+void PageReplacement::setHead(int head){
+	_head = head;
 }
 
-bool PageReplacement::inMemory(int value) const{
+bool PageReplacement::searchNumber(int number) const{
 		bool found = false; 
 		for(int i = 0; i < _buffer.size(); i++){
-			if(_buffer[i] == value){
+			if(_buffer[i] == number){
 				found = true;
-				break;
+				return found;
 			}
 		}
 		return found;
-}
-
-void PageReplacement::incrementPaging(){
-	_paging++;
-}
-
-void PageReplacement::incrementHead(){
-	_head++;
-}
-
-void PageReplacement::incrementHeadNPage(){
-	_head++;
-	_paging++;
-}
-
-void PageReplacement::incrementPaging(bool test){
-	if(test)
-		_paging++;
-	else
-		_paging--;
 }

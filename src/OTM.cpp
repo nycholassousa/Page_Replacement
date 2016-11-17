@@ -11,17 +11,17 @@ void OTM::lookingToFuture(){
 	for (i = 0; _buffer.size() < getFrameSize(); i++){
 		
 		if(i == 0){
-			incrementPaging(false);
+			setPage(getPage() - 1);
 		}
 
 		_buffer.push_back(_heap[i]);
-		incrementPaging();
+		setPage(getPage() + 1);
 	}
 	for(i; i < _heap.size(); i++){
-		if(inMemory(_heap[i]) == false){
+		if(searchNumber(_heap[i]) == false){
 			aux = higherDistance(i);
 			_buffer[aux] = _heap[i];
-			incrementPaging();
+			setPage(getPage() + 1);
 		}
 	}
 
@@ -33,6 +33,7 @@ int OTM::higherDistance(int test) const{
 	int aux = test;
 	int higher_position = 0; 
 	distance.clear();
+
 	for(int i = 0; i < _buffer.size(); i++){
 		for(j = aux; j < _heap.size(); j++){
 			if(_buffer[i] == _heap[j]){

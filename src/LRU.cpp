@@ -4,11 +4,11 @@
 void LRU::init(int value){
 	int oldest = 0;
 	if(_buffer.size() < getFrameSize()){
-		if(inMemory(value) == false){
+		if(searchNumber(value) == false){
 			_buffer.push_back(value);
 			_age.push_back(getHead());
-			incrementHead();
-			incrementPaging();
+			setHead(getHead() + 1);
+			setPage(getPage() + 1);
 		}
 	}
 
@@ -16,9 +16,9 @@ void LRU::init(int value){
 		if(getHead() >= getFrameSize())
 			setHead(0);
 
-		if(inMemory(value) == false){
-			incrementPaging();
-			int old = getHead()+1;
+		if(searchNumber(value) == false){
+			setPage(getPage() + 1);
+			int old = getHead() + 1;
 			
 			if(old >= getFrameSize())
 				old = 0;
@@ -26,6 +26,6 @@ void LRU::init(int value){
 			_buffer[old] = value;
 		}
 
-		incrementHead();
+		setHead(getHead() + 1);
 	}
 }

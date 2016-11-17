@@ -6,9 +6,9 @@
 class PageReplacement{
 	protected:
 		std::vector<int> _buffer;
-		int _frame_size;
+		int _frameSize;
 		int _head;
-		int _paging;
+		int _page;
 
 	public:
 
@@ -16,18 +16,14 @@ class PageReplacement{
 
 		std::vector<int> getBuffer() const;
 		int getFrameSize() const;
-		int getPaging() const;
+		int getPage() const;
 		int getHead() const;
 
-		void setFrameSize(int value);
-		void setHead(int value);
+		void setFrameSize(int frameSize);
+		void setHead(int head);
+		void setPage(int page);
 		
-		bool inMemory(int value) const;
-
-		void incrementPaging();
-		void incrementPaging(bool test);
-		void incrementHead();
-		void incrementHeadNPage();
+		bool searchNumber(int number) const;
 
 };
 #endif

@@ -31,11 +31,11 @@ int main(void){
 	otm->lookingToFuture();
 	
 	if(lru->getBuffer().size() == lru->getFrameSize())
-		lru->incrementPaging(true);
+		lru->setPage(lru->getPage() + 1);
 
-	std::cout << "FIFO " << fifo->getPaging() << endl;
-	std::cout << "OTM " << otm->getPaging() << endl;
-	std::cout << "LRU " << lru->getPaging() << endl;
+	std::cout << "FIFO " << fifo->getPage() << endl;
+	std::cout << "OTM " << otm->getPage() << endl;
+	std::cout << "LRU " << lru->getPage() << endl;
 
 
 }
