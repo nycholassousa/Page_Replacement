@@ -4,12 +4,12 @@ std::vector<int> PageReplacement::getBuffer() const{
 	return _buffer;
 }
 
-int PageReplacement::getFrameSize() const{
-	return _frameSize;
+int PageReplacement::getFrame() const{
+	return _frame;
 }
 
-void PageReplacement::setFrameSize(int frameSize){
-	_frameSize = frameSize;
+void PageReplacement::setFrame(int frame){
+	_frame = frame;
 }
 
 int PageReplacement::getPage() const{
@@ -29,12 +29,10 @@ void PageReplacement::setHead(int head){
 }
 
 bool PageReplacement::searchNumber(int number) const{
-		bool found = false; 
 		for(int i = 0; i < _buffer.size(); i++){
 			if(_buffer[i] == number){
-				found = true;
-				return found;
+				return true;
 			}
 		}
-		return found;
+		return false;
 }

@@ -1,41 +1,42 @@
 #include <iostream>
+#include <fstream>
 #include "../include/FIFO.h"
 #include "../include/OTM.h"
 #include "../include/LRU.h"
 
 int main(void){
-	int entry_date;
+	int number;
 	FIFO *fifo;
 	OTM  *otm;
 	LRU  *lru;
-	bool first_entry = true;
-	
-	while(std::cin >> entry_date){
-		if(first_entry){
+	bool first_in = true;
+
+	std::ifstream file("input.txt");
+
+	while(file >> number){
+		if (first_in){
 			fifo = new FIFO();
-			otm  = new OTM();
-			lru  = new LRU();
+			otm = new OTM();
+			lru = new LRU();
 
-			fifo->setFrameSize(entry_date);
-			otm->setFrameSize(entry_date);
-			lru->setFrameSize(entry_date);
+			fifo->setFrame(number);
+			otm->setFrame(number);
+			lru->setFrame(number);
 
-			first_entry = false;		
+			first_in = false;
 		} else {
-			fifo->init(entry_date);
-			otm->init(entry_date);
-			lru->init(entry_date);
+			fifo->init(number);
+			otm->init(number);
+			lru->init(number);
 		}
 	}
 
 	otm->lookingToFuture();
 	
-	if(lru->getBuffer().size() == lru->getFrameSize())
+	if(lru->getBuffer().size() == lru->getFrame())
 		lru->setPage(lru->getPage() + 1);
 
 	std::cout << "FIFO " << fifo->getPage() << endl;
 	std::cout << "OTM " << otm->getPage() << endl;
 	std::cout << "LRU " << lru->getPage() << endl;
-
-
 }

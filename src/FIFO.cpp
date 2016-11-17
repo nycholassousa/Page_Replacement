@@ -2,7 +2,7 @@
 
 void FIFO::init(int value){
 	
-	if(_buffer.size() != getFrameSize()){
+	if(_buffer.size() != getFrame()){
 		if(searchNumber(value) == false){
 			_buffer.push_back(value);
 			setHead(getHead() + 1);
@@ -10,15 +10,13 @@ void FIFO::init(int value){
 		}
 	}
 
-	if(getHead() >= getFrameSize())
+	if(getHead() >= getFrame())
 		setHead(0);
 	
 	if(searchNumber(value) == false){
 		_buffer[_head] = value;
-			setHead(getHead() + 1);
-			setPage(getPage() + 1);
+		setHead(getHead() + 1);
+		setPage(getPage() + 1);
 	}
 
 }
-
-

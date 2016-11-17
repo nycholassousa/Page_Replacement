@@ -8,7 +8,7 @@ void OTM::init(int value){
 void OTM::lookingToFuture(){
 	int aux = 0;
 	int i = 0;
-	for (i = 0; _buffer.size() < getFrameSize(); i++){
+	for (i = 0; _buffer.size() < getFrame(); i++){
 		
 		if(i == 0){
 			setPage(getPage() - 1);
