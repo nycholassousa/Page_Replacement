@@ -20,10 +20,8 @@ void OTM::lookingToFuture(){
 	for(i; i < _heap.size(); i++){
 		if(inMemory(_heap[i]) == false){
 			aux = higherDistance(i);
-			//printf("Changed: %d", );
 			_buffer[aux] = _heap[i];
 			incrementPaging();
-			//printf("%d\n", buffer[i]);
 		}
 	}
 
