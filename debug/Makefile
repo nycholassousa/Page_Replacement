@@ -21,4 +21,4 @@ all: FIFO.o LRU.o OTM.o PageReplacement.o
 .PHONY: clean
 
 clean:
-	rm -rf *.o
+	rm -rf *.o $(EXE)

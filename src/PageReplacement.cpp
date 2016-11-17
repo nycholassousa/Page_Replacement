@@ -4,14 +4,6 @@ std::vector<int> PageReplacement::getBuffer() const{
 	return _buffer;
 }
 
-int PageReplacement::getBufferValue(int value) const{
-	return _buffer[value];
-}
-
-void PageReplacement::setBuffer(std::vector<int> buffer){
-	_buffer = buffer;
-}
-
 int PageReplacement::getFrameSize() const{
 	return _frame_size;
 }
@@ -22,10 +14,6 @@ void PageReplacement::setFrameSize(int value){
 
 int PageReplacement::getPaging() const{
 	return _paging;
-}
-
-void PageReplacement::setPaging(int value){
-	_paging = value;
 }
 
 int PageReplacement::getHead() const{
@@ -58,17 +46,6 @@ void PageReplacement::incrementHead(){
 void PageReplacement::incrementHeadNPage(){
 	_head++;
 	_paging++;
-}
-
-void PageReplacement::decrementHead(){
-	_head--;
-} 
-
-int PageReplacement::whatNumberInMemory(int value) const{
-	for(int i = 0; i < _buffer.size(); i++){
-		if(_buffer[i] == value)
-			return value;
-	}
 }
 
 void PageReplacement::incrementPaging(bool test){

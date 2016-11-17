@@ -14,6 +14,7 @@ class OTM: public PageReplacement{
 
 		int higherDistance(int distance) const;
 		int findPosition(int value) const;
+		
 		int higherThan(std::vector<int> values);		
 };
 

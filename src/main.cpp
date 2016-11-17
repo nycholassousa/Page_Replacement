@@ -6,16 +6,15 @@
 int main(void){
 	int entry_date;
 	FIFO *fifo;
-	OTM *otm;
-	LRU *lru;
+	OTM  *otm;
+	LRU  *lru;
 	bool first_entry = true;
 	
 	while(std::cin >> entry_date){
-		
 		if(first_entry){
 			fifo = new FIFO();
-			otm = new OTM();
-			lru = new LRU();
+			otm  = new OTM();
+			lru  = new LRU();
 
 			fifo->setFrameSize(entry_date);
 			otm->setFrameSize(entry_date);
