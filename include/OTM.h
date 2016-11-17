@@ -6,16 +6,12 @@
 class OTM: public PageReplacement{
 	private:
 		std::vector<int> _heap;
-		int _verify;
 		
 	public:
-		void init(int value);
+		void start(int value);
 		void lookingToFuture();
 
-		int higherDistance(int distance) const;
-		int findPosition(int value) const;
-		
-		int higherThan(std::vector<int> values);		
+		int higherDistance(int value) const;
 };
 
 #endif

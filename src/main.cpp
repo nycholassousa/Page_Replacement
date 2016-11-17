@@ -5,29 +5,30 @@
 #include "../include/LRU.h"
 
 int main(void){
-	int number;
+	int fileEntryData;
+	bool firstEntryData = true;
+
 	FIFO *fifo;
 	OTM  *otm;
 	LRU  *lru;
-	bool first_in = true;
 
 	std::ifstream file("input.txt");
 
-	while(file >> number){
-		if (first_in){
+	while(file >> fileEntryData){
+		if (firstEntryData){
 			fifo = new FIFO();
 			otm = new OTM();
 			lru = new LRU();
 
-			fifo->setFrame(number);
-			otm->setFrame(number);
-			lru->setFrame(number);
+			fifo->setFrame(fileEntryData);
+			otm->setFrame(fileEntryData);
+			lru->setFrame(fileEntryData);
 
-			first_in = false;
+			firstEntryData = false;
 		} else {
-			fifo->init(number);
-			otm->init(number);
-			lru->init(number);
+			fifo->start(fileEntryData);
+			otm->start(fileEntryData);
+			lru->start(fileEntryData);
 		}
 	}
 
@@ -39,4 +40,6 @@ int main(void){
 	std::cout << "FIFO " << fifo->getPage() << endl;
 	std::cout << "OTM " << otm->getPage() << endl;
 	std::cout << "LRU " << lru->getPage() << endl;
+
+	return 0;
 }

@@ -5,7 +5,7 @@
 
 class FIFO: public PageReplacement{
 	public:
-		void init(int value);
+		void start(int value);
 };
 
 #endif

@@ -1,8 +1,7 @@
 #include "../include/LRU.h"
 
 
-void LRU::init(int value){
-	int oldest = 0;
+void LRU::start(int value){
 	if(_buffer.size() < getFrame()){
 		if(searchNumber(value) == false){
 			_buffer.push_back(value);

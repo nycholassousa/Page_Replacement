@@ -1,6 +1,6 @@
 #include "../include/FIFO.h"
 
-void FIFO::init(int value){
+void FIFO::start(int value){
 	
 	if(_buffer.size() != getFrame()){
 		if(searchNumber(value) == false){

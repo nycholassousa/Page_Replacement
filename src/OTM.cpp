@@ -1,14 +1,14 @@
 #include "../include/OTM.h"
 #include <stdio.h>
 
-void OTM::init(int value){
+void OTM::start(int value){
 	_heap.push_back(value);
 }
 
 void OTM::lookingToFuture(){
-	int aux = 0;
-	int i = 0;
-	for (i = 0; _buffer.size() < getFrame(); i++){
+	int lastPosition;
+	int aux;
+	for (int i = 0; _buffer.size() < getFrame(); i++){
 		
 		if(i == 0){
 			setPage(getPage() - 1);
@@ -16,8 +16,9 @@ void OTM::lookingToFuture(){
 
 		_buffer.push_back(_heap[i]);
 		setPage(getPage() + 1);
+		lastPosition = i;
 	}
-	for(i; i < _heap.size(); i++){
+	for(int i = lastPosition; i < _heap.size(); i++){
 		if(searchNumber(_heap[i]) == false){
 			aux = higherDistance(i);
 			_buffer[aux] = _heap[i];
@@ -27,11 +28,11 @@ void OTM::lookingToFuture(){
 
 }
 
-int OTM::higherDistance(int test) const{
-	int j = 0;
+int OTM::higherDistance(int value) const{
 	std::vector<int> distance;
-	int aux = test;
-	int higher_position = 0; 
+	int j = 0;
+	int aux = value; 
+
 	distance.clear();
 
 	for(int i = 0; i < _buffer.size(); i++){
@@ -44,26 +45,4 @@ int OTM::higherDistance(int test) const{
 	}
 	
 	return 0;
-}
-
-int OTM::findPosition(int value) const{
-	for(int i = 0; i < _heap.size(); i++){
-		if(_heap[i] == value)
-			return i;
-	}
-}
-
-
-int higherThan(std::vector<int> values){
-	int higher = -1;
-	int position;
-
-	for(int i = 0; i < values.size(); i++){
-		if(values[i] > higher){
-			higher = values[i];
-			position = i;
-		}
-	}
-	
-	return position;
 }

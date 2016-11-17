@@ -5,12 +5,11 @@
 
 using namespace std;
 class LRU: public PageReplacement{
-
 	private:
 		std::vector<int> _age;
 
 	public:
-		void init(int value);
-
+		void start(int value);
 };
+
 #endif
