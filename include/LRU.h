@@ -5,9 +5,6 @@
 
 using namespace std;
 class LRU: public PageReplacement{
-	private:
-		std::vector<int> _lruBuffer;
-
 	public:
 		void start(int value);
 };

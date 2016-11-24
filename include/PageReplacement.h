@@ -11,7 +11,6 @@ class PageReplacement{
 		int _page;
 
 	public:
-		virtual void init(int value) {};
 
 		std::vector<int> getBuffer() const;
 		int getFrame() const;
