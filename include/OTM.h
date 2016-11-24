@@ -10,8 +10,6 @@ class OTM: public PageReplacement{
 	public:
 		void start(int value);
 		void future();
-
-		int distance(int value) const;
 };
 
 #endif

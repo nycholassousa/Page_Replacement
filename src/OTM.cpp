@@ -1,48 +1,36 @@
 #include "../include/OTM.h"
-#include <stdio.h>
+#include <iostream>
 
+/** Insere todos os valores do input.txt num buffer auxiliar
+	(com exceção da primeira linha) **/
 void OTM::start(int value){
 	_otmBuffer.push_back(value);
 }
 
 void OTM::future(){
 	int lastPosition;
-	int aux;
+
+	/** roda enquanto o tamanho do buffer principal for menor
+		que o tamanho do quadro **/
 	for (int i = 0; _buffer.size() < getFrame(); i++){
 		
-		if(i == 0){
+		if(i == 0)
 			setPage(getPage() - 1);
-		}
 
+		//buffer coloca no final o primeiro do auxiliar
 		_buffer.push_back(_otmBuffer[i]);
+		//incremento de página
 		setPage(getPage() + 1);
-		lastPosition = i;
+		lastPosition = i; //salva a último i (usado no proximo loop)
 	}
+
+	/** Roda depois da ultima posição do buffer principal
+		Enquanto nao lê o buffer auxiliar completamente **/
 	for(int i = lastPosition; i < _otmBuffer.size(); i++){
 		if(searchNumber(_otmBuffer[i]) == false){
-			aux = distance(i);
-			_buffer[aux] = _otmBuffer[i];
+			_buffer[0] = _otmBuffer[i];
 			setPage(getPage() + 1);
 		}
 	}
 
-}
-
-int OTM::distance(int value) const{
-	std::vector<int> distance;
-	int j = 0;
-	int aux = value; 
-
-	distance.clear();
-
-	for(int i = 0; i < _buffer.size(); i++){
-		for(j = aux; j < _otmBuffer.size(); j++){
-			if(_buffer[i] == _otmBuffer[j]){
-				distance.push_back(j);
-			}
-		}
-		j = 0;
-	}
-	
-	return 0;
 }

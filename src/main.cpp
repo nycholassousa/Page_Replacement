@@ -14,7 +14,7 @@ int main(void){
 	LRU  *lru = new LRU();
 
 	//Arquivo a ser lido
-	std::ifstream file("input.txt");
+	std::ifstream file("input1.txt");
 
 	//Leitura do arquivo
 	while(file >> fileData){ 
